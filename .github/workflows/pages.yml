@@ -9,14 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Install dependencies
         run: npm install
+
       - name: Build project
         run: npm run build
+
       - name: Upload to Pages
         uses: cloudflare/pages-action@1
         with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          apiToken: "${{ secrets.CF_API_TOKEN }}"
+          accountId: "${{ secrets.CF_ACCOUNT_ID }}"
           projectName: rsshub
           directory: ./dist
